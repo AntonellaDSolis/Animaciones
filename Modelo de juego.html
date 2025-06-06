@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I just want to kiss you</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: pink;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    iframe {
+      width: 80%;
+      max-width: 600px;
+      height: 340px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      border: none;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 2em;
+      color: #fff;
+      text-shadow: 2px 2px #d63384;
+    }
+
+    .heart {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background-color: #e91e63;
+      transform: rotate(45deg);
+      z-index: 0;
+      animation: float 7s linear infinite;
+      opacity: 1;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background-color: #e91e63;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -12px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -12px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: -30px;
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+      100% {
+        bottom: 80vh;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <iframe 
+      src="https://www.youtube.com/embed/3o5pEQFW5hg?autoplay=1&=1&loop=1&playlist=3o5pEQFW5hg"
+      title="YouTube video player"
+      allow="autoplay; encrypted-media" 
+      allowfullscreen>
+    </iframe>
+    <h1>I just want to kiss you</h1>
+  </div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 3) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        if (heart.parentNode) {
+          heart.parentNode.removeChild(heart);
+        }
+      }, 8000);
+    }
+
+    // Generar muchos corazones continuamente
+    setInterval(createHeart, 100);
+  </script>
+
+</body>
+</html>
